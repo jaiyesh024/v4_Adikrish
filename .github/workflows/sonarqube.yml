@@ -21,7 +21,7 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           args:
-            -Dsonar.projectKey= jaiyesh024
+            -Dsonar.projectKey= jaiyesh024_v4_Adikrish
       - name: python setup
         uses: actions/setup-python@v4
         with:
