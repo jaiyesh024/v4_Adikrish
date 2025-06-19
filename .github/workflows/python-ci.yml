@@ -6,6 +6,7 @@ on:
     branches: ["main"]
 jobs:
   test:
+    name: Tesing with python
     runs-on: ubuntu-latest 
     steps: 
       - name: Code Checkout
@@ -18,6 +19,6 @@ jobs:
           pip install -r requirements.txt
           pip install flake8 pytest
       - name: lint with flask
-        run: flaske8 .
+        run: flake8 .
       - name: run tests
         run: pytest
