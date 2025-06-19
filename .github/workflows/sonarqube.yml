@@ -18,6 +18,7 @@ jobs:
         with:
           args:
             -Dsonar.projectKey=jaiyesh024_v4_Adikrish
+            -Dsonar.organization=jaiyesh024
       - name: python setup
         uses: actions/setup-python@v4
         with:
