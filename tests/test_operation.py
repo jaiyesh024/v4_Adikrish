@@ -7,4 +7,3 @@ def test_add():
 
 def test_sub():
     assert sub(5, 3) == 2
-    
