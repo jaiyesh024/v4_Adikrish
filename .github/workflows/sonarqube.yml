@@ -14,16 +14,20 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Analyze with SonarQube
-        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
-          SONAR_HOST_URL: https://sonarcloud.io
-        with:
-          args:
-            -Dsonar.projectKey=jaiyesh024_v4_Adikrish
-            -Dsonar.organization=jaiyesh024
+      - name: Install SonarScanner CLI
+        run: |
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+          unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+          export PATH="$PATH:$(pwd)/sonar-scanner-5.0.1.3006-linux/bin"
+      - name: Run SonarScanner
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=jaiyesh024_v4_Adikrish \
+            -Dsonar.organization=jaiyesh024 \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
       - name: python setup
         uses: actions/setup-python@v4
         with:
